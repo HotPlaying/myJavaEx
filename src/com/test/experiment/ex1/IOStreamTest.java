@@ -10,6 +10,7 @@ public class IOStreamTest {
         printFile(file);
 
         String[] pathList = file.list();
+        assert pathList != null;
         for (String fL : pathList) {
             System.out.println(fL);
 //            printFile(new File(fL));
@@ -19,6 +20,7 @@ public class IOStreamTest {
     }
     static void printFile(File f) {
         File[] files = f.listFiles();
+        assert files != null;
         for (File file : files) {
             System.out.println(file);
         }

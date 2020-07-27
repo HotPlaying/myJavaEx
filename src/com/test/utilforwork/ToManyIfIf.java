@@ -5,6 +5,13 @@
  */
 package com.test.utilforwork;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -28,26 +35,31 @@ public class ToManyIfIf {
             "98188ea63d6c4a7f9f148833b0727ac6",
             "e80475accd754590a933adf2a95ff7f9",
             "e92633f6e57e431c8eba79a00045a684"};
+    public static final String FILE_TYPE = ".js";
 
-//    public static
-
-    public static void main(String[] args) {
-        while (true) {
+    public static void main(String[] args) throws IOException {
+        String datetime = DateTimeFormatter.ofPattern("yyyy-MM-dd_HHmmss").format(LocalDateTime.now());
+        String path = "F:\\Log\\export_" + datetime.toString() + FILE_TYPE;
+        System.out.println(path);
+        File file = new File(path);
+        boolean createSuccess = file.createNewFile();
+        while (createSuccess) {
             List<String> textList = new ArrayList<>();
             System.out.println("输入要转换的字符串：");
             Scanner scanner = new Scanner(System.in);
             while (true) {
                 StringBuilder text = new StringBuilder(scanner.nextLine());
-                if ("".equals(text.toString()))
-                    break;
+                if ("".equals(text.toString())) break;      // 输入空行，则结束输入
+                if ("exit".equals(text.toString())) return; // 输入中的一行为"exit"则退出程序
                 textList.add(text.toString());
             }
 //            System.out.println(joinDouhao(textList));
 //        printHiddenValue(textList);
 //            scanner.close();
-        printUpper(textList);
+//            printUpper(textList);
 //        printLower(textList);
 //            printDICITEM(textList);
+            outputAddHidden(textList, file);
         }
     }
 
@@ -75,9 +87,9 @@ public class ToManyIfIf {
     }
 
     /*
-    添加隐藏输入框，用于传值到后台
-        */
-    public static void addHidden(List<String> textList) {
+     添加隐藏输入框，用于传值到后台
+     */
+    public static void printAddHidden(List<String> textList) {
         for (String s : textList)
             System.out.println("let " + s + " = $.CurrentNavtab.find('#" + s + "').val();");
         System.out.println("$.CurrentNavtab.find(\"#dm_bl_ztx_form\").append(`");
@@ -90,7 +102,33 @@ public class ToManyIfIf {
         }
     }
 
-    public static void setDefaultValue(List<String> textList) {
+    /**
+     * @Author tangrd
+     * @Description 添加隐藏输入框，用于传值到后台，写入到文件中
+     * 测试好以后写这种重复性的代码就方便多了，直接在文件里面拿出来
+     * @Date 2020/7/27 17:49
+     **/
+    public static void outputAddHidden(List<String> textList, File file) {
+        StringBuilder sb = new StringBuilder();
+        for (String s : textList)
+            sb.append("let ").append(s).append(" = $.CurrentNavtab.find('#").append(s).append("').val();\n");
+        sb.append("$.CurrentNavtab.find(\"#dm_bl_ztx_form\").append(`\n");
+        for (String s : textList)
+            sb.append("<input type=\"hidden\" id=\"").append(s).append("\" name=\"").append(s).append("\" value=\"` + ").append(s).append(" + `\">\n");
+        sb.append("`);\n");
+        for (String s : textList) {
+            sb.append("$.CurrentNavtab.find(\"#").append(s).append("\").attr('readonly', true);\n");
+        }
+        try {
+            byte[] bytes = sb.toString().getBytes();    // 前面组的stringBuilder转换为比特流
+            Files.write(file.toPath(), bytes);          // 将比特流写入到文件中
+            System.out.println("输出完成，文件路径：" + file.getPath());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void printSetDefaultValue(List<String> textList) {
         for (String s : textList) {
             System.out.println("if (o.get" + s + "() == null ||\"\".equals(o.get" + s + "()))\n" +
                     "            o.set" + s + "(\"0\");");
@@ -98,8 +136,8 @@ public class ToManyIfIf {
         }
     }
 
-    public static StringBuilder setIntoUpperCase(StringBuilder text) {
-        return new StringBuilder().append(Character.toUpperCase(text.charAt(0))).append(text.substring(1));
+    public static String setIntoUpperCase(StringBuilder text) {
+        return Character.toUpperCase(text.charAt(0)) + text.substring(1);
     }
 
     public static String joinDouhao(List<String> textList) {
@@ -125,7 +163,7 @@ public class ToManyIfIf {
 
     public static void printUpper(List<String> textList) {
         for (String s : textList) {
-            System.out.println("'"+s.toUpperCase()+"',");
+            System.out.println("'" + s.toUpperCase() + "',");
 //            System.out.println(s.toLowerCase());
         }
     }
