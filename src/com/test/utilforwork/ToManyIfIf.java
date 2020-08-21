@@ -35,7 +35,7 @@ public class ToManyIfIf {
             "98188ea63d6c4a7f9f148833b0727ac6",
             "e80475accd754590a933adf2a95ff7f9",
             "e92633f6e57e431c8eba79a00045a684"};
-    public static final String FILE_TYPE = ".js";
+    public static final String FILE_TYPE = ".txt";
 
     public static void main(String[] args) throws IOException {
         String datetime = DateTimeFormatter.ofPattern("yyyy-MM-dd_HHmmss").format(LocalDateTime.now());
@@ -59,8 +59,24 @@ public class ToManyIfIf {
 //            printUpper(textList);
 //        printLower(textList);
 //            printDICITEM(textList);
-            outputAddHidden(textList, file);
+//            outputAddHidden(textList, file);
+//            outputUpper(textList, file);
+            outputDicItemSort(textList,file);
         }
+    }
+
+    public static void outputDicItemSort(List<String> textList, File file) {
+        String s1 = "";
+        int i = 1;
+        StringBuilder sb = new StringBuilder();
+        for (String s: textList) {
+            if (!s1.equals(s)) {
+                s1 = s;
+                i = 1;
+            }
+            sb.append(Integer.toString(i++) + '\n');
+        }
+        outputToFile(file, sb);
     }
 
     public static void printDICITEM(List<String> textList) {
@@ -119,6 +135,21 @@ public class ToManyIfIf {
         for (String s : textList) {
             sb.append("$.CurrentNavtab.find(\"#").append(s).append("\").attr('readonly', true);\n");
         }
+        outputToFile(file, sb);
+    }
+
+    public static void outputUpper(List<String> textList, File file) {
+        StringBuilder sb = new StringBuilder();
+        for (String s : textList) {
+//            System.out.println("'" + s.toUpperCase() + "',");
+//            sb.append("'" + s.toUpperCase() + "',");
+//            System.out.println(s.toLowerCase());
+            sb.append(s.toUpperCase()).append('\n');
+        }
+        outputToFile(file, sb);
+    }
+
+    public static void outputToFile(File file, StringBuilder sb) {
         try {
             byte[] bytes = sb.toString().getBytes();    // 前面组的stringBuilder转换为比特流
             Files.write(file.toPath(), bytes);          // 将比特流写入到文件中
@@ -167,6 +198,8 @@ public class ToManyIfIf {
 //            System.out.println(s.toLowerCase());
         }
     }
+
+
 
     public static void printLower(List<String> textList) {
         for (String s : textList) {

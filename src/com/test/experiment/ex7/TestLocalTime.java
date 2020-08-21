@@ -10,7 +10,7 @@ import java.util.Calendar;
  * @date 2020/7/27 17:30
  * @description 日期类的使用与测试
  */
-public class testLocalTime {
+public class TestLocalTime {
     public static void main(String[] args) {
         // adapted to java 1.7
         Calendar c = Calendar.getInstance();
