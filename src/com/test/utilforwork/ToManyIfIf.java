@@ -17,6 +17,9 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.StringJoiner;
 
+import static com.test.utilforwork.ConstCollection.bridList;
+import static com.test.utilforwork.ConstCollection.trList;
+
 /**
  * @author tangrd
  * @date 2020/5/27 16:16
@@ -25,16 +28,6 @@ import java.util.StringJoiner;
  * 写出了这么一个工具，来自动生成对应属性对应代码
  */
 public class ToManyIfIf {
-    public static String[] bridList = {"472fe429a37d48599241696178c284be",
-            "485cd9511063464e9a5c85cdb0b0dbc3",
-            "2787e8bb589140f5a5993c347d65293c",
-            "f4c17735a91c4812a8b26a6e1d03c1c7",
-            "d6520bf0e40d4f31b4824ca2ffd929b3",
-            "fe023422bf374312950b126db4533f13",
-            "67b65e33d5de410891452dba277cc9af",
-            "98188ea63d6c4a7f9f148833b0727ac6",
-            "e80475accd754590a933adf2a95ff7f9",
-            "e92633f6e57e431c8eba79a00045a684"};
     public static final String FILE_TYPE = ".txt";
 
     public static void main(String[] args) throws IOException {
@@ -61,7 +54,8 @@ public class ToManyIfIf {
 //            printDICITEM(textList);
 //            outputAddHidden(textList, file);
 //            outputUpper(textList, file);
-            outputDicItemSort(textList,file);
+//            outputDicItemSort(textList, file);
+            outputTable(textList, file);
         }
     }
 
@@ -69,7 +63,7 @@ public class ToManyIfIf {
         String s1 = "";
         int i = 1;
         StringBuilder sb = new StringBuilder();
-        for (String s: textList) {
+        for (String s : textList) {
             if (!s1.equals(s)) {
                 s1 = s;
                 i = 1;
@@ -149,15 +143,40 @@ public class ToManyIfIf {
         outputToFile(file, sb);
     }
 
+    /**
+     * 表格拆分窗格
+     * @Date 2020/8/26 14:58
+     **/
+    public static void outputTable(List<String> textList, File file) {
+//        StringBuilder sb = new StringBuilder();
+        String regex = "\\.<tr>\\.";
+        int i = 0;
+        for (String s : textList) {
+            StringBuilder sb = new StringBuilder();
+            sb.append(s).append("\n");
+            if (regex.matches(s)) {
+                sb.append(trList[i++]).append("\n");
+            }
+            outputToFile(file, sb);
+        }
+        System.out.println("输出完成，文件路径：" + file.getPath());
+//        outputToFile(file, sb);
+    }
+    /**
+     * 输出到文件
+     * @Date 2020/8/26 14:49
+     **/
     public static void outputToFile(File file, StringBuilder sb) {
         try {
             byte[] bytes = sb.toString().getBytes();    // 前面组的stringBuilder转换为比特流
             Files.write(file.toPath(), bytes);          // 将比特流写入到文件中
-            System.out.println("输出完成，文件路径：" + file.getPath());
+
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
+
 
     public static void printSetDefaultValue(List<String> textList) {
         for (String s : textList) {
@@ -198,7 +217,6 @@ public class ToManyIfIf {
 //            System.out.println(s.toLowerCase());
         }
     }
-
 
 
     public static void printLower(List<String> textList) {
