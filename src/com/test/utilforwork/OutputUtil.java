@@ -13,11 +13,11 @@ import java.time.format.DateTimeFormatter;
  */
 public class OutputUtil {
     public static Boolean outToLog(final String content) {
-        return outToLog("F:\\logs\\", ".log", content);
+        return outToLog("F:\\Work\\Java_EX\\_JS experiment for VSCode\\draft\\exportLog", ".log", content);
     }
 
     public static Boolean outToLog(final String path, final String fileType, final String content) {
-        String datetime = DateTimeFormatter.ofPattern("yyyy-MM-dd_HHmmss").format(LocalDateTime.now());
+        String datetime = DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss").format(LocalDateTime.now());
         File file = new File(path + datetime + fileType);
         try {
             file.createNewFile();

@@ -20,9 +20,10 @@ public class UUIDTool {
 
     public static void main(String[] args) {
 //		String[] ss = getUUID(10);
-        for (int i = 0; i < 700; i++) {
-            System.out.println(getUUID());
-        }
+//        for (int i = 0; i < 700; i++) {
+//            System.out.println(getUUID());
+//        }
+        System.out.println(getUUID().length());
     }
 
 }

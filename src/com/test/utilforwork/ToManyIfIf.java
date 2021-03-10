@@ -31,12 +31,8 @@ public class ToManyIfIf {
     public static final String FILE_TYPE = ".txt";
 
     public static void main(String[] args) throws IOException {
-        String datetime = DateTimeFormatter.ofPattern("yyyy-MM-dd_HHmmss").format(LocalDateTime.now());
-        String path = "F:\\Log\\export_" + datetime.toString() + FILE_TYPE;
-        System.out.println(path);
-        File file = new File(path);
-        boolean createSuccess = file.createNewFile();
-        while (createSuccess) {
+
+        while (true) {
             List<String> textList = new ArrayList<>();
             System.out.println("输入要转换的字符串：");
             Scanner scanner = new Scanner(System.in);
@@ -50,12 +46,12 @@ public class ToManyIfIf {
 //        printHiddenValue(textList);
 //            scanner.close();
 //            printUpper(textList);
-//        printLower(textList);
+        printLower(textList);
 //            printDICITEM(textList);
 //            outputAddHidden(textList, file);
 //            outputUpper(textList, file);
 //            outputDicItemSort(textList, file);
-            outputTable(textList, file);
+//            outputTable(textList, file);
         }
     }
 
