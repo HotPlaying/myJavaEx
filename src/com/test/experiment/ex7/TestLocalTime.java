@@ -13,13 +13,18 @@ import java.util.Calendar;
 public class TestLocalTime {
     public static void main(String[] args) {
         // adapted to java 1.7
-        Calendar c = Calendar.getInstance();
-        String dateTime = new SimpleDateFormat("yyyy-MM-dd_HHmmss").format(c.getTime());
-        System.out.println(dateTime);
+//        Calendar c = Calendar.getInstance();
+//        String dateTime = new SimpleDateFormat("yyyy-MM-dd_HHmmss").format(c.getTime());
+//        System.out.println(dateTime);
 
         // adapted to java 1.8 or newer
         System.out.println(LocalDateTime.now());
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd_HHmmss");
         System.out.println(dtf.format(LocalDateTime.now()));
+
+        Calendar c = Calendar.getInstance();
+        c.add(Calendar.MONTH, -1);//得到前一个月
+        String dateTime = new SimpleDateFormat("yyyy-MM-dd").format(c.getTime());
+        System.out.println(dateTime);
     }
 }
