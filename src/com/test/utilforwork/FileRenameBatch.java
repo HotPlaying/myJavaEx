@@ -12,7 +12,7 @@ import java.util.List;
 public class FileRenameBatch {
     public static void main(String[] args) {
         File dst = new File("D:\\Video\\Animation\\_字幕\\[异域-11番小队]零之使魔2双月的骑士Zero_no_Tsukaima_2_Futatukinokishi[HKG&amp;amp;EMD字幕]");
-        File src = new File("D:\\Video\\Animation\\[VCB-Studio] Zero no Tsukaima\\[VCB-Studio] Zero no Tsukaima Princess no Rondo [Ma10p_1080p]");
+        File src = new File("D:\\Video\\Animation\\[VCB-Studio] Zero no Tsukaima\\[VCB-Studio] Zero no Tsukaima Futatsuki no Kishi [Ma10p_1080p]");
         assert dst.isDirectory();
         assert src.isDirectory();
         List<String> srcFileList = Arrays.asList(src.list());
@@ -26,9 +26,9 @@ public class FileRenameBatch {
 //                String n = i < 10 ? "0" + i : Integer.toString(i);
                 File item = new File(dst.getPath() + "\\" + dstFileList.get(i++));
                 File item_new = new File(dst.getPath() + "\\" + fileNewName);
-//                System.out.printf("[%s] renameTo [%s]\\n",item.getName(),item_new.getName());
+//                System.out.printf("[%s] renameTo [%s] \n", item.getName(), item_new.getName());
 
-                System.out.printf("[%s] renameTo [%s] is [%s]\\n",item.getName(),item_new.getName(),item.renameTo(item_new));
+                System.out.printf("[%s] renameTo [%s] is [%s]\n",item.getName(),item_new.getName(),item.renameTo(item_new));
             }
         }
 //        String dstName = "\\[VCB-Studio] Zero no Tsukaima [#i#][Ma10p_1080p][x265_flac].ass";
