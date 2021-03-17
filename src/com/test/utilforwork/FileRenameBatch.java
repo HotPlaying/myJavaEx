@@ -39,9 +39,9 @@ public class FileRenameBatch {
         int i = 0;
 
         for (String s : srcFileList) {
-            if (!s.matches(".*SP.*\\.mkv")) continue;
+            if (!s.matches(".*\\.mkv")) continue;
             else {
-                while (!dstFileList.get(i).matches(".*SP.*")) i++;
+                while (!dstFileList.get(i).matches(".*")) i++;
                 String fileNewName = s.split("\\.")[0] + ".ass";
 //                String n = i < 10 ? "0" + i : Integer.toString(i);
                 File item = new File(dst.getPath() + "\\" + dstFileList.get(i++));
@@ -56,6 +56,24 @@ public class FileRenameBatch {
                 }
             }
         }
+        if (!"1".equals(option)) return;
+        System.out.println("是否真正改名：1.是，2.否");
+        option = scanner.nextLine();
+        i = 0;
+        if (!"1".equals(option)) return;
+        boolean res = true;
+        for (String s : srcFileList) {
+            if (!s.matches(".*\\.mkv")) continue;
+            else {
+                while (!dstFileList.get(i).matches(".*")) i++;
+                String fileNewName = s.split("\\.")[0] + ".ass";
+//                String n = i < 10 ? "0" + i : Integer.toString(i);
+                File item = new File(dst.getPath() + "\\" + dstFileList.get(i++));
+                File item_new = new File(dst.getPath() + "\\" + fileNewName);
+                res = res && item.renameTo(item_new);
+            }
+        }
+        System.out.println("批量重命名" + (res ? "成功" : "失败"));
 //        String dstName = "\\[VCB-Studio] Zero no Tsukaima [#i#][Ma10p_1080p][x265_flac].ass";
 
 //        int i = 0;
