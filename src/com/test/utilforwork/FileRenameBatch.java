@@ -41,7 +41,7 @@ public class FileRenameBatch {
         for (String s : srcFileList) {
             if (!s.matches(".*\\.mkv")) continue;
             else {
-                while (!dstFileList.get(i).matches(".*")) i++;
+                while (!dstFileList.get(i).matches(".*\\.ass")) i++;
                 String fileNewName = s.split("\\.")[0] + ".ass";
 //                String n = i < 10 ? "0" + i : Integer.toString(i);
                 File item = new File(dst.getPath() + "\\" + dstFileList.get(i++));
@@ -65,7 +65,7 @@ public class FileRenameBatch {
         for (String s : srcFileList) {
             if (!s.matches(".*\\.mkv")) continue;
             else {
-                while (!dstFileList.get(i).matches(".*")) i++;
+                while (!dstFileList.get(i).matches(".*\\.ass")) i++;
                 String fileNewName = s.split("\\.")[0] + ".ass";
 //                String n = i < 10 ? "0" + i : Integer.toString(i);
                 File item = new File(dst.getPath() + "\\" + dstFileList.get(i++));
