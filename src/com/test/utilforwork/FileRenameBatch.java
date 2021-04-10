@@ -1,5 +1,7 @@
 package com.test.utilforwork;
 
+import org.junit.Test;
+
 import java.io.File;
 import java.util.Arrays;
 import java.util.List;
@@ -89,4 +91,15 @@ public class FileRenameBatch {
 //        }
     }
 
+    @Test
+    public void test(){
+        File file = new File("F:\\DEV Files\\Tomcat\\apache-tomcat-8.5.64\\webapps\\comics\\我立于百万生命之上");
+        String [] fileList = file.list();
+        for(String s : fileList){
+            if (s.matches(".*\\.html")){
+                System.out.println(s);
+
+            }
+        }
+    }
 }
