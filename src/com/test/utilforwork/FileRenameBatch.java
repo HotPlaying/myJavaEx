@@ -14,7 +14,7 @@ import java.util.Scanner;
  * @description
  */
 public class FileRenameBatch {
-    public static String subtitleFile_type = "srt";
+    public static String subtitleFile_type = "ass";
     public static int step = 0;
 
     public static void main(String[] args) {
