@@ -2,6 +2,8 @@ package com.test.experiment.threadtest;
 
 import org.junit.Test;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.concurrent.locks.StampedLock;
 
 public class MultiThreadTest {
@@ -248,4 +250,87 @@ public class MultiThreadTest {
             e.printStackTrace();
         }
     }
+
+    @Test
+    public void test05() {
+        Counter c1 = new Counter();
+        final int MAX_LIMIT = 20;
+        final int[] THRESHOLD = {6, 14, 18};
+
+        class CounterRunnable implements Runnable {
+            private int id;
+
+            CounterRunnable(int id) {
+                this.id = id;
+            }
+
+            private String getName() {
+                return "RUNNABLE#" + id;
+            }
+
+            @Override
+            public void run() {
+                int timer = 0;
+                boolean operated = false;
+                while (c1.get() < MAX_LIMIT) {
+                    timer++;
+                    if (timer % 1000 == 0) {
+                        switch (id) {
+                            case 0:
+                                if (!operated && c1.get() >= THRESHOLD[2]) {
+                                    synchronized (c1) {
+                                        System.out.printf("%s is calls c1.notify() \n", this.getName());
+                                        c1.notifyAll();
+                                        operated = true;
+                                    }
+                                }
+                                break;
+                            case 1:
+                                if (!operated && c1.get() >= THRESHOLD[1]) {
+                                    try {
+                                        System.out.printf("%s calls sleep(4) \n", this.getName());
+                                        Thread.sleep(4);
+                                    } catch (InterruptedException e) {
+                                        e.printStackTrace();
+                                        operated = true;
+                                    }
+                                }
+                                break;
+                            case 2:
+                                if (!operated && c1.get() >= THRESHOLD[0]) {
+                                    try {
+                                        synchronized (c1) {
+                                            System.out.printf("%s calls c1.wait(); \n", this.getName());
+                                            c1.wait();
+                                            operated = true;
+                                        }
+                                    } catch (InterruptedException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                                break;
+                        }
+                        synchronized (c1) {
+                            c1.add();
+                            System.out.printf("(%s, %d) = %d \n", this.getName(), timer, c1.get());
+                        }
+                    }
+                }
+            }
+        }
+
+        ExecutorService exec = Executors.newCachedThreadPool();
+
+        for (int i = 0; i < 3; i++) {
+            exec.execute(new CounterRunnable(i));
+        }
+
+        try {
+            Thread.sleep(1200);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+//        exec.shutdown();
+    }
+
 }

@@ -8,7 +8,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * @date 2021/5/8 11:21
  * @description
  */
-public class AtomicCounter implements Counter {
+public class AtomicCounter extends Counter {
 //    private static final sun.misc.Unsafe U;
 //
 //    static {
