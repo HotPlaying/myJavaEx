@@ -23,7 +23,8 @@ public class TestLocalTime {
         System.out.println(dtf.format(LocalDateTime.now()));
 
         Calendar c = Calendar.getInstance();
-        c.add(Calendar.MONTH, -1);//得到前一个月
+        //得到前一个月
+//        c.add(Calendar.MONTH, -1);
         String dateTime = new SimpleDateFormat("yyyy-MM-dd").format(c.getTime());
         System.out.println(dateTime);
     }
