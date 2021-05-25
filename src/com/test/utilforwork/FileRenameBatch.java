@@ -87,7 +87,8 @@ public class FileRenameBatch {
                     System.out.println(s);
                     break;
                 case "2":
-                    System.out.printf("【%s】 -> 【%s】 \n", item.getName(), item_new.getName());
+                    if (s.length() < 40)
+                    System.out.printf("【%-39s\t】->【%s】 \n", item.getName(), item_new.getName());
                     break;
                 case "3":
                     res = res && item.renameTo(item_new);
