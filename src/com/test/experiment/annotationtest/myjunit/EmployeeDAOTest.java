@@ -1,0 +1,33 @@
+package com.test.experiment.annotationtest.myjunit;
+
+/**
+ * @author tangrd
+ * @date 2021/5/26 15:18
+ * @description
+ */
+/**
+ * 和我们平时使用Junit测试时一样
+ *
+ * @author qiyu
+ */
+public class EmployeeDAOTest {
+    @MyBefore
+    public void init() {
+        System.out.println("初始化...");
+    }
+
+    @MyAfter
+    public void destroy() {
+        System.out.println("销毁...");
+    }
+
+    @MyTest
+    public void testSave() {
+        System.out.println("save...");
+    }
+
+    @MyTest
+    public void testDelete() {
+        System.out.println("delete...");
+    }
+}

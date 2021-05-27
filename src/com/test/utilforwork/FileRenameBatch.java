@@ -88,11 +88,26 @@ public class FileRenameBatch {
                     break;
                 case "2":
                     if (s.length() < 40)
-                    System.out.printf("【%-39s\t】->【%s】 \n", item.getName(), item_new.getName());
+                        System.out.printf("【%-39s\t】->【%s】 \n", item.getName(), item_new.getName());
                     break;
                 case "3":
                     res = res && item.renameTo(item_new);
                     System.out.print(res ? "-" : "|");
+                    if (!res) {
+                        int index = 1;
+                        while (!res) {
+                            res = true;
+                            String[] nameSplit = fileNewName.split("\\.");
+                            if (nameSplit.length < 2) break;
+                            String repeatFileName = nameSplit[nameSplit.length - 2] +
+                                    "(" + index++ + ")" + "." +
+                                    nameSplit[nameSplit.length - 1];
+                            item_new = new File(dst.getPath() + File.separator + repeatFileName);
+                            res = res && item.renameTo(item_new);
+                            System.out.printf("\n[%s] repeated! set into [%s]: [%s]\n", fileNewName, repeatFileName, res);
+                            fileNewName = repeatFileName;
+                        }
+                    }
 //                    System.out.printf("\"%s\" renameTo \"%s\" is [%s]\n", item.getName(), item_new.getName(), item.renameTo(item_new));
                     break;
             }
