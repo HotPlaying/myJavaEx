@@ -178,14 +178,13 @@ public class FileRenameBatch {
     }
 
     @Test
-    public void test() {
-        File file = new File("F:\\DEV Files\\Tomcat\\apache-tomcat-8.5.64\\webapps\\comics\\我立于百万生命之上");
-        String[] fileList = file.list();
+    public void test() throws InterruptedException {
+        String filePath = "D:\\WorkSpace\\ProjectsSrc\\macau-power-api\\WebRoot\\WEB-INF\\lib";
+        File file = new File(filePath);
+        String [] fileList = file.list();
         for (String s : fileList) {
-            if (s.matches(".*\\.html")) {
-                System.out.println(s);
-
-            }
+            System.out.println(s);
         }
+        Thread.sleep(1000L);
     }
 }
