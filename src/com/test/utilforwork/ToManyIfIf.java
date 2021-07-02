@@ -21,11 +21,12 @@ import static com.test.utilforwork.ConstCollection.bridList;
 import static com.test.utilforwork.ConstCollection.trList;
 
 /**
+ * 解决一堆if和if的重复性代码，要打40几条，太麻烦，故
+ * 写出了这么一个工具，来自动生成对应属性对应代码
+ *
  * @author tangrd
  * @date 2020/5/27 16:16
  * @updatetime 2020-07-15 16:58:14  在vscode测试
- * @destination 解决一堆if和if的重复性代码，要打40几条，太麻烦，故
- * 写出了这么一个工具，来自动生成对应属性对应代码
  */
 public class ToManyIfIf {
     public static final String FILE_TYPE = ".txt";
@@ -109,10 +110,11 @@ public class ToManyIfIf {
     }
 
     /**
-     * @Author tangrd
-     * @Description 添加隐藏输入框，用于传值到后台，写入到文件中
+     * 添加隐藏输入框，用于传值到后台，写入到文件中
      * 测试好以后写这种重复性的代码就方便多了，直接在文件里面拿出来
-     * @Date 2020/7/27 17:49
+     *
+     * @author tangrd
+     *  2020/7/27 17:49
      **/
     public static void outputAddHidden(List<String> textList, File file) {
         StringBuilder sb = new StringBuilder();
