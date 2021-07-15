@@ -1,9 +1,11 @@
 package com.test.utilforwork;
 
+import org.apache.log4j.Logger;
+
 import java.util.UUID;
 
 public class UUIDTool {
-
+    private static final Logger logger = Logger.getLogger(UUIDTool.class);
     public UUIDTool() {
     }
     public static String getUUID() {
@@ -20,10 +22,11 @@ public class UUIDTool {
 
     public static void main(String[] args) {
 //		String[] ss = getUUID(10);
-//        for (int i = 0; i < 700; i++) {
+        for (int i = 0; i < 45; i++) {
 //            System.out.println(getUUID());
-//        }
-        System.out.println(getUUID().length());
+            logger.info(getUUID());
+        }
+//        System.out.println(getUUID().length());
     }
 
 }

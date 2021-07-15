@@ -1,13 +1,17 @@
 package com.test.experiment.ex7;
 
+import com.test.utilforwork.UUIDTool;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.log4j.Logger;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
 public class GenericMethods {
+    private static final Logger logger = Logger.getLogger(UUIDTool.class);
+
     public static <T, O> List<T> getFieldList(List<O> oList, String fieldName) {
         if (CollectionUtils.isEmpty(oList) || StringUtils.isEmpty(fieldName)) {
             return null;
@@ -37,6 +41,7 @@ public class GenericMethods {
         userList.add(new User("a003", "b003", "c003", "d003"));
         userList.add(new User("a004", "b004", "c004", "d004"));
         List<String> useridList = getFieldList(userList, "userid");
-        System.out.println(useridList);
+//        System.out.println(useridList);
+        logger.info(userList);
     }
 }
