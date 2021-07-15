@@ -51,11 +51,11 @@
         </dependency>
     </dependencies>
     <build>
-        <sourceDirectory>src</sourceDirectory>
+        <sourceDirectory>src/main/java</sourceDirectory>
         <!--扫描resources中的文件类型-->
         <resources>
             <resource>
-                <directory>src/main/java</directory>
+                <directory>src/main/resources</directory>
                 <includes>
                     <include>**/*.xml</include>
                     <include>**/*.properies</include>
