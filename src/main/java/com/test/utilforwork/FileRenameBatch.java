@@ -93,22 +93,23 @@ public class FileRenameBatch {
                 case "3":
                     res = res && item.renameTo(item_new);
                     System.out.print(res ? "-" : "|");
-                    if (!res) {
-                        int index = 1;
-                        while (!res) {
-                            res = true;
-                            String[] nameSplit = fileNewName.split("\\.");
-                            if (nameSplit.length < 2) break;
-                            String repeatFileName = nameSplit[nameSplit.length - 2] +
-                                    "(" + index++ + ")" + "." +
-                                    nameSplit[nameSplit.length - 1];
-                            item_new = new File(dst.getPath() + File.separator + repeatFileName);
-                            res = res && item.renameTo(item_new);
-                            System.out.printf("\n[%s] repeated! set into [%s]: [%s]\n", fileNewName, repeatFileName, res);
-                            fileNewName = repeatFileName;
-                        }
+                    if (res) break;
+
+                    int index = 1;
+                    while (!res) {
+                        res = true;
+                        String[] nameSplit = fileNewName.split("\\.");
+                        if (nameSplit.length < 2) break;
+                        String repeatFileName = nameSplit[nameSplit.length - 2] +
+                                "(" + index++ + ")" + "." +
+                                nameSplit[nameSplit.length - 1];
+                        item_new = new File(dst.getPath() + File.separator + repeatFileName);
+                        res = res && item.renameTo(item_new);
+                        System.out.printf("\n[%s] repeated! set into [%s]: [%s]\n", fileNewName, repeatFileName, res);
+                        fileNewName = repeatFileName;
                     }
-//                    System.out.printf("\"%s\" renameTo \"%s\" is [%s]\n", item.getName(), item_new.getName(), item.renameTo(item_new));
+//                    System.out.printf("\"%s\" renameTo \"%s\" is [%s]\n", item.getName(),
+//                    item_new.getName(), item.renameTo(item_new));
                     break;
             }
         }
@@ -145,17 +146,17 @@ public class FileRenameBatch {
     }
 
     public static void main(String[] args) {
-        numMusicFileRename();
-//        Scanner scanner = new Scanner(System.in);
-//        System.out.println("选择操作：1.动画BD字幕重命名，2.音乐文件重命名");
-//        String option = scanner.nextLine();
-//        switch (option) {
-//            case "1":
-//                videoSubtitleFileRename();
-//                break;
-//            case "2":
-//                numMusicFileRename();
-//        }
+//        numMusicFileRename();
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("选择操作：1.动画BD字幕重命名，2.音乐文件重命名");
+        String option = scanner.nextLine();
+        switch (option) {
+            case "1":
+                videoSubtitleFileRename();
+                break;
+            case "2":
+                numMusicFileRename();
+        }
     }
 
     /**
@@ -181,7 +182,7 @@ public class FileRenameBatch {
     public void test() throws InterruptedException {
         String filePath = "D:\\WorkSpace\\ProjectsSrc\\macau-power-api\\WebRoot\\WEB-INF\\lib";
         File file = new File(filePath);
-        String [] fileList = file.list();
+        String[] fileList = file.list();
         for (String s : fileList) {
             System.out.println(s);
         }
