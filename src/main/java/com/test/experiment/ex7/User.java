@@ -1,14 +1,20 @@
 package com.test.experiment.ex7;
 
+import lombok.Data;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author tangrd
  * @date 2020/9/22 19:51
  * @description
  */
+@Data
 public class User {
     private String uuid;
-    private String userid;
-    private String username;
+    private String account;
+    private String name;
     private String password;
 
     private String type1;
@@ -22,45 +28,21 @@ public class User {
     private String type9;
     private String type10;
 
+    public static List<User> getUserList() {
+        List<User> userList = new ArrayList<>();
+        userList.add(new User("40288a0a7b7afb9e017b7afdb1d60033", "913", "LamTengHou", "4297F44B13955235245B2497399D7A93"));
+        userList.add(new User("40288a0a7b7afb9e017b7afdb2300035", "2448", "MakKaTim,Tim", "55511808BAF7F301B5270D7334A4CEC0"));
+        userList.add(new User("40288a0a7b7afb9e017b7afdb2710042", "371", "LeiChiKuong", "4297F44B13955235245B2497399D7A93"));
+        userList.add(new User("40288a0a7b7afb9e017b7afdb2760044", "1300", "ChanChanSeng", "55511808BAF7F301B5270D7334A4CEC0"));
+        return userList;
+    }
 
-    public User(String uuid, String userid, String username, String password) {
+    public User(String uuid, String account, String name, String password) {
         this.uuid = uuid;
-        this.userid = userid;
-        this.username = username;
+        this.account = account;
+        this.name = name;
         this.password = password;
     }
 
     public User() {}
-
-    public String getUuid() {
-        return uuid;
-    }
-
-    public void setUuid(String uuid) {
-        this.uuid = uuid;
-    }
-
-    public String getUserid() {
-        return userid;
-    }
-
-    public void setUserid(String userid) {
-        this.userid = userid;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
 }
