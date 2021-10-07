@@ -1,4 +1,8 @@
-package com.test.experiment.ex7;
+package com.test.experiment.pojo;
+
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import lombok.Data;
 
@@ -11,6 +15,8 @@ import java.util.List;
  * @description
  */
 @Data
+@NoArgsConstructor
+@Builder
 public class User {
     private String uuid;
     private String account;
@@ -43,6 +49,4 @@ public class User {
         this.name = name;
         this.password = password;
     }
-
-    public User() {}
 }

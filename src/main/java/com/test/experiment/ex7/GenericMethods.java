@@ -1,5 +1,6 @@
 package com.test.experiment.ex7;
 
+import com.test.experiment.pojo.User;
 import com.test.utilforwork.UUIDTool;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;

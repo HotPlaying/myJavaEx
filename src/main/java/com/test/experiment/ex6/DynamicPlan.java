@@ -2,6 +2,8 @@ package com.test.experiment.ex6;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.test.experiment.pojo.Item;
+
 import java.util.ArrayList;
 import java.util.List;
 
