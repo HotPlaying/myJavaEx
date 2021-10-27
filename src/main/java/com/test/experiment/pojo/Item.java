@@ -1,4 +1,4 @@
-package com.test.experiment.ex6;
+package com.test.experiment.pojo;
 
 import lombok.Data;
 

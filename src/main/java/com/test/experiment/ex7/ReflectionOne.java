@@ -1,5 +1,6 @@
 package com.test.experiment.ex7;
 
+import com.test.experiment.pojo.User;
 import org.junit.Test;
 
 import java.lang.reflect.Field;
