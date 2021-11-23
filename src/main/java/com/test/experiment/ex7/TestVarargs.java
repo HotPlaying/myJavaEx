@@ -3,6 +3,8 @@ package com.test.experiment.ex7;
 import com.alibaba.fastjson.JSONObject;
 import org.apache.commons.lang3.StringUtils;
 
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -15,6 +17,8 @@ public class TestVarargs {
         String a = null;
         String b = "abc";
         String c = "123";
+
+        List<String> aaa = new LinkedList<>();
 
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("a", a);

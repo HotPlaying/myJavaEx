@@ -33,8 +33,11 @@ public class UseStream {
         Stream<Person> stream = personList.stream();
 
         Stream<Person> hStream = stream.filter(person -> person.getHeight() > 170);
-        Stream<Double> wStream = hStream.map(Person::getWeight);
         List<Person> hList = hStream.collect(Collectors.toList());
+
+        Stream<Person> stream1 = personList.stream();
+        Stream<Person> hStream1 = stream1.filter(person -> person.getHeight() > 170);
+        Stream<Double> wStream = hStream1.map(Person::getWeight);
 
         List<Double> wList = wStream.collect(Collectors.toList());
 
