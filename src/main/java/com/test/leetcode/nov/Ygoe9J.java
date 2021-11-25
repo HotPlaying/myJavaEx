@@ -44,30 +44,5 @@ public class Ygoe9J {
             dfs(candidates, target - current, ans, com, idx);
             com.remove(com.size() - 1);
         }
-
-//
-//        for (int a : candidates) {
-//            list.add(a);
-//            int sum = sum(list);
-//            if (sum < target) {
-//                List<Integer> b = dfs(candidates, target - a, ans, times);
-//                if (null == b) {
-//                    return null;
-//                }
-//                list.addAll(b);
-//            } else if (sum == target) {
-//                return list;
-//            } else {
-//                list.remove(list.size() - 1);
-//            }
-//        }
-    }
-
-    int sum(List<Integer> list) {
-        int a = 0;
-        for (Integer integer : list) {
-            a += integer;
-        }
-        return a;
     }
 }
