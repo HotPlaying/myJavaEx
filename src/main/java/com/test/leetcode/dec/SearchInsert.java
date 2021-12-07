@@ -2,12 +2,25 @@ package com.test.leetcode.dec;
 
 import org.junit.Test;
 
+import com.test.leetcode.tool.Question;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+
 /**
  * @author tangrd
  * @since 2021/12/5 17:06
  * https://leetcode-cn.com/problems/search-insert-position/
  */
-public class SearchInsert {
+@AllArgsConstructor
+public class SearchInsert extends Question {
+
+    public Params params;
+
+    @Override
+    public Object run() {
+        return run(params.nums, params.target);
+    }
+
     @Test
     public void test() {
         int[] arr = {1, 3, 5, 6};
@@ -36,7 +49,14 @@ public class SearchInsert {
      * {1,3,5,6} 0 0
      */
 
-    public int searchInsert(int[] nums, int target) {
+    @AllArgsConstructor
+    @NoArgsConstructor
+    public static class Params extends Question.Params {
+        int[] nums;
+        int target;
+    }
+
+    public static int run(int[] nums, int target) {
         for (int i = 0; i < nums.length; i++) {
             if (nums[i] >= target) {
                 return i;
@@ -56,7 +76,8 @@ public class SearchInsert {
                 l = mid + 1;
             } else if (target < a) {
                 r = mid - 1;
-            } if (target == a) {
+            }
+            if (target == a) {
                 return mid;
             }
         }
