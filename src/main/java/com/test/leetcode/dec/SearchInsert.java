@@ -12,12 +12,12 @@ public class SearchInsert {
     public void test() {
         int[] arr = {1, 3, 5, 6};
         System.out.println("执行结果：");
-        System.out.println(searchInsert(arr, 5));
-        System.out.println(searchInsert(arr, 2));
-        System.out.println(searchInsert(arr, 7));
-        System.out.println(searchInsert(arr, 1));
-        System.out.println(searchInsert(arr, 3));
-        System.out.println(searchInsert(arr, 4));
+        System.out.println(searchInsert1(arr, 5));
+        System.out.println(searchInsert1(arr, 2));
+        System.out.println(searchInsert1(arr, 7));
+        System.out.println(searchInsert1(arr, 1));
+        System.out.println(searchInsert1(arr, 3));
+        System.out.println(searchInsert1(arr, 4));
         System.out.println("预期结果：");
         System.out.println(2);
         System.out.println(1);
@@ -45,17 +45,11 @@ public class SearchInsert {
         return nums.length;
     }
 
-    public int s2HS(int[] nums, int target) {
+    public int searchInsert1(int[] nums, int target) {
         int l = 0;
         int r = nums.length - 1;
 
-        while (l < r) {
-            if (target > nums[r]) {
-                return r + 1;
-            }
-            if (target < nums[l]) {
-                return l;
-            }
+        while (l <= r) {
             int mid = l + ((r - l) >>> 1);
             int a = nums[mid];
             if (target > a) {
@@ -66,6 +60,6 @@ public class SearchInsert {
                 return mid;
             }
         }
-        return l + 1;
+        return r + 1;
     }
 }
