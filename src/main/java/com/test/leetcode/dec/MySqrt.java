@@ -21,6 +21,7 @@ public class MySqrt {
         System.out.println((int)Math.pow(4, 0.5));
         System.out.println((int)Math.pow(8, 0.5));
         System.out.println((int)Math.pow(5, 0.5));
+        System.out.println((int)Math.pow(9, 0.5));
         System.out.println((int)Math.pow(2147395599, 0.5));
     }
 
@@ -30,7 +31,7 @@ public class MySqrt {
         int r = x;
         while (l <= r) {
             int mid = l + ((r - l) >>> 1);
-            int tar = mid * mid;
+            long tar = (long) mid * mid;
             if (tar < x) {
                 l = mid + 1;
             } else if (tar > x) {
