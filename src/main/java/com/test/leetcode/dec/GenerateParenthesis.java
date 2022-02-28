@@ -8,6 +8,7 @@ import java.util.List;
  * https://leetcode-cn.com/problems/generate-parentheses/
  */
 public class GenerateParenthesis {
+    // 就已经2022.2.18了，3个多月没刷了
     public List<String> generateParenthesis(int n) {
         return null;
     }
