@@ -1,4 +1,4 @@
-package com.test.experiment.ex6;
+package com.test.experiment.ex.ex6;
 
 public class Threads4 {
     public static void main(String[] args) {

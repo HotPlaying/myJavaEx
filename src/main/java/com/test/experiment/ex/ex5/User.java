@@ -1,4 +1,4 @@
-package com.test.experiment.ex5;
+package com.test.experiment.ex.ex5;
 
 public class User {
     private int id;

@@ -1,4 +1,4 @@
-package com.test.experiment.ex4;
+package com.test.experiment.ex.ex4;
 
 import java.util.ArrayList;
 import java.util.List;

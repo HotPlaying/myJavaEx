@@ -1,4 +1,4 @@
-package com.test.experiment.ex6;
+package com.test.experiment.ex.ex6;
 
 public class HelloWorld {
     public static void main(String[] args) {

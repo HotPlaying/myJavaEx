@@ -1,4 +1,4 @@
-package com.test.experiment.ex1;
+package com.test.experiment.ex.ex1;
 
 /**
  * @author tangrd

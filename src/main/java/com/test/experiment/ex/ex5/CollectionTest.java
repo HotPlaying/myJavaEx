@@ -1,4 +1,4 @@
-package com.test.experiment.ex5;
+package com.test.experiment.ex.ex5;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;

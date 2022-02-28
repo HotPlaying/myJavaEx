@@ -1,4 +1,4 @@
-package com.test.experiment.ex6;
+package com.test.experiment.ex.ex6;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;

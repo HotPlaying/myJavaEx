@@ -1,4 +1,4 @@
-package com.test.experiment.ex2;
+package com.test.experiment.ex.ex2;
 
 import java.io.IOException;
 import java.util.StringJoiner;

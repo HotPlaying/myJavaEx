@@ -1,6 +1,6 @@
 package com.test.utilforwork;
 
-import com.test.experiment.ex1.Student;
+import com.test.experiment.ex.ex1.Student;
 
 import java.lang.reflect.Field;
 

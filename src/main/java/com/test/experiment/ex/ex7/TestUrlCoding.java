@@ -1,4 +1,4 @@
-package com.test.experiment.ex7;
+package com.test.experiment.ex.ex7;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
