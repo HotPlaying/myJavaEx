@@ -1,5 +1,7 @@
 package com.test.experiment.ex.ex7;
 
+import org.junit.Test;
+
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -27,5 +29,13 @@ public class TestLocalTime {
 //        c.add(Calendar.MONTH, -1);
         String dateTime = new SimpleDateFormat("yyyy-MM-dd").format(c.getTime());
         System.out.println(dateTime);
+    }
+
+    @Test
+    public void test() {
+        Long created = 1651892733000L;
+        String a = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(created);
+        System.out.println(a);
+
     }
 }
