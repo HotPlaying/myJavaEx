@@ -53,6 +53,7 @@ public class PoiTest {
  * 使用CountDownLatch的await方法，等待所有线程完成sheet操作
  */
             doneSignal.await();
+
             es.shutdown();
             FileOutputStream os = new FileOutputStream("E:\\temp\\poiTest.xls");
             wb.write(os);

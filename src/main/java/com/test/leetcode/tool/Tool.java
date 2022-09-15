@@ -1,7 +1,6 @@
 package com.test.leetcode.tool;
 
-import com.test.leetcode.dec.BinarySearch;
-import com.test.leetcode.dec.SearchInsert;
+import com.test.leetcode.twentyone.dec.SearchInsert;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import org.junit.Test;

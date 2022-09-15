@@ -1,4 +1,4 @@
-package com.test.leetcode.feb;
+package com.test.leetcode.twentytwo.feb;
 
 import org.junit.Test;
 

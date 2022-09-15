@@ -1,7 +1,4 @@
-package com.test.leetcode.nov;
-
-import java.util.HashMap;
-import java.util.Map;
+package com.test.leetcode.twentyone.nov;
 
 /**
  * @author tangrd

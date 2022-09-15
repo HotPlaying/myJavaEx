@@ -1,4 +1,4 @@
-package com.test.leetcode.dec;
+package com.test.leetcode.twentyone.dec;
 
 import java.util.List;
 

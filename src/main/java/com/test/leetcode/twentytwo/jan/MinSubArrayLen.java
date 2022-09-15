@@ -1,4 +1,4 @@
-package com.test.leetcode.jan;
+package com.test.leetcode.twentytwo.jan;
 
 import org.junit.Test;
 

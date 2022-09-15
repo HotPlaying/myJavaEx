@@ -1,4 +1,4 @@
-package com.test.leetcode.mar;
+package com.test.leetcode.twentytwo.mar;
 
 import org.junit.Test;
 
