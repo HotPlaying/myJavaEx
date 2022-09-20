@@ -8,5 +8,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * @since 2022/7/14 17:05
  */
 public class Report {
-    Map<String, Object> m = new ConcurrentHashMap<>();
+    void test() {
+        Map<String, Object> m = new ConcurrentHashMap<>();
+    }
 }
