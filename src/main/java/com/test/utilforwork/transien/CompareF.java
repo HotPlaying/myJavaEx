@@ -1,11 +1,8 @@
 package com.test.utilforwork.transien;
 
-import org.apache.commons.io.FileUtils;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -22,14 +19,16 @@ public class CompareF {
                 "Back Arrow"
         );
 
-        String localPath = "H:\\Media\\Video\\Animation";
+        String localPath = "F:\\Video\\Animation\\Blu-ray Disc";
         Set<String> localFileSets = getFileSets(localPath);
-        Set<String> movableFileSets = getFileSets("I:\\Video\\AnimationBD");
+        Set<String> movableFileSets = getFileSets("I:\\Media\\Video\\Animation");
 
-
+//        System.out.println(localFileSets);
+//        System.out.println(movableFileSets);
         Set<String> collect = localFileSets
                 .stream()
-                .filter(v -> movableFileSets.contains(v) && v.startsWith("["))
+                // 过滤出移动硬盘里面和本地交集的文件夹
+                .filter(v -> !movableFileSets.contains(v))
 //                .filter(v -> excludeList.stream().noneMatch(v::contains))
                 .collect(Collectors.toSet());
         for (String s : collect) {
@@ -52,6 +51,6 @@ public class CompareF {
         List<File> fileList1 = Arrays.asList(files1);
         return fileList1
                 .stream()
-                .map(v -> v.getName()).collect(Collectors.toSet());
+                .map(File::getName).collect(Collectors.toSet());
     }
 }

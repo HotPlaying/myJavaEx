@@ -3,7 +3,10 @@ package com.test.utilforwork;
 import org.junit.Test;
 
 import java.io.File;
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
+import java.util.Scanner;
 
 /**
  * @author tangrd
@@ -11,7 +14,7 @@ import java.util.*;
  * @description
  */
 public class FileRenameBatch {
-    public static String subtitleFile_type = "ass";
+    public static String subtitleFile_type = "ssa";
     public static int step = 0;
 
     public static int times = 100;
@@ -143,8 +146,20 @@ public class FileRenameBatch {
         fileRenameBatch(srcPath, dstPath, option);
     }
 
-    public static void main(String[] args) {
-//        numMusicFileRename();
+    public static void main(String[] args) throws InterruptedException {
+        try {
+            mainProcess(args);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            Thread.sleep(2000L);
+        }
+    }
+
+    private static void mainProcess(String[] args) {
+        if (args.length > 0) {
+            subtitleFile_type = Optional.ofNullable(args[0]).orElse(subtitleFile_type);
+        }
         Scanner scanner = new Scanner(System.in);
         System.out.println("选择操作：1.动画BD字幕重命名，2.音乐文件重命名");
         String option = scanner.nextLine();
