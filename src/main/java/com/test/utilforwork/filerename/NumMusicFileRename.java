@@ -42,18 +42,15 @@ public class NumMusicFileRename {
       File item_new = new File(dst.getPath() + File.separator + fileNewName);
 
       switch (option) {
-        case "1":
-          System.out.println(s);
-          break;
-        case "2":
+        case "1" -> System.out.println(s);
+        case "2" -> {
           if (s.length() < 40)
             System.out.printf("【%-39s\t】->【%s】 \n", item.getName(), item_new.getName());
-          break;
-        case "3":
+        }
+        case "3" -> {
           res = res && item.renameTo(item_new);
           System.out.print(res ? "-" : "|");
           if (res) break;
-
           int index = 1;
           while (!res) {
             res = true;
@@ -65,7 +62,7 @@ public class NumMusicFileRename {
             System.out.printf("\n[%s] repeated! set into [%s]: [%s]\n", fileNewName, repeatFileName, res);
             fileNewName = repeatFileName;
           }
-          break;
+        }
       }
     }
     if ("3".equals(option)) {

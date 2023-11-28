@@ -49,7 +49,7 @@ public class SubFileRename {
   }
 
 
-  protected static void subFileRenameBatch(String videoPath, String subPath, String option) {
+  public static void subFileRenameBatch(String videoPath, String subPath, String option) {
     File subDirectory = new File(subPath);
     final List<String> subFileList = fileList(subPath).stream().filter(SubFileRename::validSubFileName).toList();
     final List<String> videoFileList = fileList(videoPath).stream()
