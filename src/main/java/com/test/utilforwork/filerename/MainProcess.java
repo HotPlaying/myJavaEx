@@ -3,8 +3,7 @@ package com.test.utilforwork.filerename;
 import java.util.Optional;
 import java.util.Scanner;
 
-import static com.test.utilforwork.filerename.Constants.DEFAULT_SUB_TYPE;
-import static com.test.utilforwork.filerename.Constants.logger;
+import static com.test.utilforwork.filerename.Constants.*;
 import static com.test.utilforwork.filerename.NumMusicFileRename.numMusicFileRename;
 import static com.test.utilforwork.filerename.SubFileRename.videoSubtitleFileRename;
 
@@ -25,7 +24,8 @@ public class MainProcess {
 
   private static void mainProcess(String[] args) {
     if (args.length > 0) {
-      DEFAULT_SUB_TYPE = Optional.ofNullable(args[0]).orElse(DEFAULT_SUB_TYPE);
+      Optional.of(args).map(a -> a[0]).ifPresent(v -> DEFAULT_SUB_TYPE = v);
+      Optional.of(args).filter(a -> a.length >= 2).map(a -> a[1]).ifPresent(v -> DEFAULT_VIDEO_TYPE = v);
     }
     Scanner scanner = new Scanner(System.in);
     logger("选择操作：1.动画BD字幕重命名，2.音乐文件重命名");

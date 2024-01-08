@@ -1,10 +1,7 @@
 package com.test.utilforwork.filerename;
 
 import java.io.File;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
-import java.util.Scanner;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -51,7 +48,7 @@ public class SubFileRename {
 
   public static void subFileRenameBatch(String videoPath, String subPath, String option) {
     File subDirectory = new File(subPath);
-    final List<String> subFileList = fileList(subPath).stream().filter(SubFileRename::validSubFileName).toList();
+    final List<String> subFileList = fileList(subPath).stream().filter(SubFileRename::validSubFileName).sorted().toList();
     final List<String> videoFileList = fileList(videoPath).stream()
       .filter(SubFileRename::validVideoFileName)
       .limit(subFileList.size()).toList();
@@ -63,9 +60,8 @@ public class SubFileRename {
       File dstSub = new File(subDirectory.getPath() + "\\" + newSubNameFrom(videoNameFrom(videoFileName)));
       if (step == 1) {
         switch (option) {
-          case "1" -> logger("\"%s\" renameTo \"%s\" \n", srcSub.getName(), dstSub.getName());
-          case "2" ->
-            logger("\"%s\" ➡ \"%s\" [%s]\n", srcSub.getName(), dstSub.getName(), srcSub.renameTo(dstSub) ? "√" : "×");
+          case "1" -> logger("\"%s\" -> \"%s\" \n", srcSub.getName(), dstSub.getName());
+          case "2" -> logger("\"%s\" -> \"%s\" [%s]\n", srcSub.getName(), dstSub.getName(), srcSub.renameTo(dstSub) ? "V" : "X");
         }
       }
       if (step == 2) {
@@ -86,8 +82,9 @@ public class SubFileRename {
   }
 
   private static boolean validVideoFileName(String srcVideoFileName) {
-    return srcVideoFileName.matches(".*\\.mkv");
+    return srcVideoFileName.matches(".*\\." + DEFAULT_VIDEO_TYPE);
   }
+
 
   private static String newSubNameFrom(String videoName) {
     return videoName + "." + DEFAULT_SUB_TYPE;

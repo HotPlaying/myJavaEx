@@ -6,6 +6,7 @@ package com.test.utilforwork.filerename;
  */
 public class Constants {
   public static String DEFAULT_SUB_TYPE = "ssa";
+  public static String DEFAULT_VIDEO_TYPE = "mkv";
   public static int step = 0;
 
   public static void logger(String format, Object ... args) {
