@@ -1,6 +1,12 @@
 package com.test.utilforwork.filerename;
 
+import org.apache.commons.io.FileUtils;
 import org.junit.Test;
+
+import java.io.File;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Stream;
 
 /**
   * @author tangrd 
@@ -16,5 +22,17 @@ public class SubFileRenameTest {
       "F:\\Video\\Animation\\_字幕\\新建文件夹",
       "2"
     );
+  }
+
+  @Test
+  public void listAndCompare() {
+    final File local = new File("F:\\Video\\Animation\\Blu-ray Disc");
+    final String[] localList = local.list();
+    final File movable = new File("H:\\Media\\Video\\Animation\\Blu-ray Disc");
+    final List<String> movableList = Arrays.stream(movable.list()).toList();
+    final List<String> list1 = Stream.of(localList).filter(v -> movableList.contains(v)).toList();
+    for (String s : list1) {
+      System.out.println(s);
+    }
   }
 }
