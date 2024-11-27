@@ -11,7 +11,7 @@ import java.util.Arrays;
  * @author tangrd
  * @since 2022/9/19 21:10
  */
-public class GetSubtitlesFromRarbg {
+public class GetSubtitlesFromRarbgTest {
 
   @Test
   public void test() throws IOException {
@@ -19,7 +19,7 @@ public class GetSubtitlesFromRarbg {
 //        String source = "F:\\Video\\Animation\\DOTA.Dragons.Blood.S01.1080p.WEBRip.x265-RARBG";
 //        String source = "F:\\Video\\Animation\\DOTA.Dragons.Blood.S02.1080p.WEBRip.x265-RARBG";
 //        String source = "F:\\Video\\Animation\\DOTA.Dragons.Blood.S03.1080p.WEBRip.x265-RARBG";
-    String source = "F:\\Video\\TV\\Severance.S01.1080p.WEBRip.x265-RARBG";
+    String source = "F:\\Video\\TV\\Upload.S01.1080p.WEBRip.x265-RARBG";
     String srcDir = source + "\\Subs";
     String dstDir = source + "\\nnsc";
     File srcFile = new File(srcDir);
@@ -28,7 +28,7 @@ public class GetSubtitlesFromRarbg {
     File dstFile = new File(dstDir);
     if (dstFile.exists() && dstFile.isDirectory()) dstFile.mkdir();
 
-    String subNameContains = "6_C";
+    String subNameContains = "26_C";
     for (String subParentDirName : srcFileList) {
       String subParentDir = srcDir + File.separator + subParentDirName;
       String[] subFileNames = new File(subParentDir).list();
