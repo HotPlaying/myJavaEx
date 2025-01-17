@@ -22,6 +22,12 @@ public class SpiralMatrixII {
         System.out.println("[[1, 2, 3, 4],[12, 13, 14, 5],[11, 16, 15, 6],[10, 9, 8, 7]]");
     }
 
+    @Test
+    public void test1() {
+        int a = 4;
+        System.out.println((a + (a >> 1)));
+    }
+
     public int[][] generateMatrix(int n) {
 
         int[][] ans = new int[n][n];
